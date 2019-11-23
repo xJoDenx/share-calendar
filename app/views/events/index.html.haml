@@ -2,45 +2,18 @@
   .header--title
     Share-Calendar
   .header__btns
-    .header__btns--left
-      .signup-btn
-        新規登録
-      .signin-btn
-        ログイン
-    .header__btns--right
+    - if user_signed_in?
       .tweet-btn
-        投稿する
+        = link_to "予定を追加", new_event_path, class: "tweet-btn--link"
       .mypage-btn
-        マイページ
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "mypage-btn--link"
+    - else
+      .signup-btn
+        = link_to "新規登録", new_user_registration_path, class: "signup-btn--link"
+      .signin-btn
+        = link_to "ログイン", new_user_session_path, class: "signin-btn--link"
+    
 
 
-
-%h1 Listing events
-
-%table
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th Start date
-      %th End date
-      %th
-      %th
-      %th
-
-  %tbody
-    - @events.each do |event|
-      %tr
-        %td= event.title
-        %td= event.description
-        %td= event.start_date
-        %td= event.end_date
-        %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Event', new_event_path
 
 #calendar
