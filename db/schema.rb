@@ -10,18 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_135435) do
+ActiveRecord::Schema.define(version: 2019_12_01_130315) do
 
   create_table "casts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "", null: false
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_casts_on_event_id"
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text"
+    t.bigint "tweet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tweet_id"], name: "index_comments_on_tweet_id"
+  end
+
   create_table "event_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "img"
+    t.string "img", null: false
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,14 +37,14 @@ ActiveRecord::Schema.define(version: 2019_11_25_135435) do
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.string "title", null: false
+    t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "price"
     t.string "place"
-    t.string "venue"
+    t.string "address"
     t.text "remarks"
     t.string "site_url"
     t.date "start_date"
@@ -45,12 +53,28 @@ ActiveRecord::Schema.define(version: 2019_11_25_135435) do
   end
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_schedules_on_event_id"
+  end
+
+  create_table "tweet_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "img"
+    t.bigint "tweet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tweet_id"], name: "index_tweet_images_on_tweet_id"
+  end
+
+  create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -69,7 +93,10 @@ ActiveRecord::Schema.define(version: 2019_11_25_135435) do
   end
 
   add_foreign_key "casts", "events"
+  add_foreign_key "comments", "tweets"
   add_foreign_key "event_images", "events"
   add_foreign_key "events", "users"
   add_foreign_key "schedules", "events"
+  add_foreign_key "tweet_images", "tweets"
+  add_foreign_key "tweets", "users"
 end
