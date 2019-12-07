@@ -66,3 +66,7 @@ gem 'momentjs-rails'
 gem 'haml-rails'
 gem 'devise'
 gem 'pry-rails'
+gem 'cocoon'
+gem 'font-awesome-rails'
+gem 'autosize'
+gem 'font-awesome-sass', "< 5.0.13"
