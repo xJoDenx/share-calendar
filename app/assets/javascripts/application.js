@@ -14,6 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require autosize
+//= require cocoon
 //= require moment
 //= require fullcalendar
 //= require_tree .
@@ -62,4 +64,9 @@ $(function () {
     //イベントの文字色を変える
     eventTextColor: '#000000',
   });
+  $(document).ready(function(){
+    autosize($('textarea'));
+  });
 });
+
+
