@@ -4,7 +4,10 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = current_user.events
+    if user_signed_in?
+      @events = current_user.events
+    end
+
   end
 
   # GET /events/1
@@ -15,6 +18,9 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event.casts.build
+    @event.event_images.build
+    @event.schedules.build
   end
 
   # GET /events/1/edit
@@ -25,14 +31,15 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
+    @event.save
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        redirect_to root_path
+        # format.html { render :new }
+        # format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +76,9 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :start_date, :end_date).merge(user_id: current_user.id)
+      params.require(:event).permit(:title, :description, :start_date, :end_date, :price, :place, :address, :remarks, :site_url,
+      casts_attributes: [ :id, :name, :event_id, :_destroy ],
+      event_images_attributes: [ :id, :img, :event_id, :_destroy ],
+      schedules_attributes: [ :id, :start_time, :end_time, :event_id, :_destroy ]).merge(user_id: current_user.id)
     end
 end

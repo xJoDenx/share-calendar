@@ -1,0 +1,26 @@
+
+
+@import "./reset";
+@import "fullcalendar";
+@import "font-awesome";
+@import "font-awesome-sprockets";
+@import "side-bar";
+@import "event/index";
+@import "event/new";
+@import "event/form";
+@import "user/show";
+@import "tweet/index";
+@import "tweet/new";
+
+* {
+  box-sizing: border-box;
+  }
+a {
+  text-decoration: none;
+  color: #FFF;
+  }
+html{
+  background-color: #000033;
+  color: #FFF;
+}
+

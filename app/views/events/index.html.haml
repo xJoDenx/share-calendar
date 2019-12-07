@@ -1,19 +1,9 @@
-.header
-  .header--title
-    Share-Calendar
-  .header__btns
-    - if user_signed_in?
-      .tweet-btn
-        = link_to "予定を追加", new_event_path, class: "tweet-btn--link"
-      .mypage-btn
-        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "mypage-btn--link"
-    - else
-      .signup-btn
-        = link_to "新規登録", new_user_registration_path, class: "signup-btn--link"
-      .signin-btn
-        = link_to "ログイン", new_user_session_path, class: "signin-btn--link"
+= render "layouts/side-bar"
+.wrapper
+  .side-bar
     
+  .center-box
 
-
-
-#calendar
+  .right-box
+    .calendar-box
+      #calendar

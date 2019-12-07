@@ -1,0 +1,143 @@
+.wrapper{
+  display: flex;
+  border-top: solid 1px #888888 ;
+  border-bottom: solid 1px #888888 ;
+  height: 780px;
+}
+
+.center-box{
+  width: 45%;
+  background-color: #000033;
+  border-right: solid 1px #888888 ;
+  margin-left: 22.5%;
+}
+
+.select-tabs{
+  background-color:	#708090;
+  font-size: 18px;
+  display: flex;
+}
+
+.tweet-tab{
+  width: 50%;
+  color: #B0C4DE;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.tweet-tab:hover{
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.event-tab{
+  width: 50%;
+  color: #B0C4DE;
+  text-align: center;
+  padding: 5px 0;
+}
+.event-tab:hover{
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+.active-tab{
+  color: #1DA1F2;
+  border-bottom: solid 3px #1DA1F2;
+}
+
+.main-content-box{
+  height: 500px;
+  overflow: scroll;
+}
+
+.main-content-list{
+  padding: 10px 20px;
+  display: flex;
+  border-bottom: solid 1px #888888;
+}
+
+.tweet-right{
+  width: 90%;
+  color: #EEEEEE;
+  margin-left: 10px;
+}
+
+.tweet-upper{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  &__name{
+    font-weight: bold;
+  }
+  &__right{
+    display: flex;
+    &__date{
+      color: #708090;
+      font-size: 14px;
+    }
+    &__btn{
+      margin-left: 40px;
+      position: relative;
+    }
+    &__btn:hover .tweet-edit-link{
+      color: #1DA1F2;
+    }
+    &__btn:hover .edit_hidden-ul{
+      display: block;
+    }
+  }
+}
+
+.edit_hidden-ul{
+  display: none;
+  position: absolute;
+  width: 40px;
+  top: 16px;
+  left: 0;
+}
+
+.edit-hidden-li{
+  display: inline-block;
+  color: #708090;
+  font-size: 12px;
+  padding: 3px 0;
+}
+.edit-hidden-li:hover{
+  color: #1DA1F2;;
+}
+
+.tweet-text{
+  padding: 10px 0;
+  min-height: 60px;
+}
+
+.tweet-comennt-btn{
+  font-size: 14px;
+}
+
+.tweet-comennt-cr{
+  display: inline-block;
+  font-size: 12px;
+}
+
+.list-icon{
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tweet-edit-link{
+  color: #708090;
+}
+.comment-btn-link{
+  color: #708090;
+}
+
+.right-box{
+  width: 32.5%;
+  padding-top: 40px;
+}
+#calendar{
+}
+.fc-center{
+  padding-left: 125px;
+}

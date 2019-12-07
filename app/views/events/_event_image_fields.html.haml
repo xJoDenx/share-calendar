@@ -1,0 +1,9 @@
+
+.nested-fields
+  .new-event__field
+    = f.label :img, class: 'img-field', for: 'event-form__img' do
+      = fa_icon 'picture-o', class: 'img-field--icon'
+      画像を選択
+      = f.file_field :img, id: 'event-form__img'
+    = link_to_remove_association f, class: 'remove-btn' do
+      = fa_icon 'times-circle'

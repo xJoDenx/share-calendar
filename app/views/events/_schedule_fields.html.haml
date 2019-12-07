@@ -1,0 +1,7 @@
+.nested-fields
+  .new-event__field
+    = f.datetime_field :start_time, class: 'event-form st-time-form'
+    〜
+    = f.datetime_field :end_time, class: 'event-form en-time-form'
+    = link_to_remove_association f, class: 'remove-btn' do
+      = fa_icon 'times-circle'
