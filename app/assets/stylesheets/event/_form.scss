@@ -5,6 +5,10 @@
   font-weight: bold;
   &__field{
     margin-top: 7px;
+    &__img{
+      display: inline-block;
+      position: relative;
+    }
   }
   &__submit{
     margin-top: 20px;
@@ -30,9 +34,9 @@
 
 .ev-new-img-glid{
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px 15px;
-  margin-top: 20px;
+  margin-top: 7px;
 }
 .ev-new-img-list{
   position: relative;
@@ -50,22 +54,43 @@
 }
 .ev-new-img-prev{
   width: 120px;
+  height: 80px;
+  border-radius: 5px;
 }
-#event-form__img{
+.event-form__img{
   display: none;
 }
 
 .img-field{
+  width: 120px;
+  height: 80px;
   display: inline-block;
   padding: 5px;
   background-color: #385572;
   border: solid 1px  #888888;
   border-radius: 5px;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
+  &__contents{
+    text-align: center;
+    padding-top: 15px;
+    &--cr{
+      padding-top: 5px;
+    }
+  }
   &--icon{
     margin-right: 5px;
+    font-size: 18px;
+  }
+}
+.remove-img-btn{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  &:hover{
+    color: #1DA1F2;
   }
 }
 
@@ -129,7 +154,7 @@
     font-size: 20px;
   }
 }
-.add-cast-btn{
+.add-cast-btn, .add-img-btn{
   font-size: 14px;
   margin-left: 10px;
   cursor: pointer;

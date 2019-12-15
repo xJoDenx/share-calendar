@@ -16,20 +16,9 @@
   = f.fields_for :event_images do |i|
     .new-event
       = i.label :画像
-      .ev-new-img-glid
-        .ev-new-img-list
-          = image_tag 'https://cdn.pixabay.com/photo/2019/11/25/05/51/train-4651062__480.jpg', class: 'ev-new-img-prev'
-          .ev-new-img-list__remove
-            = fa_icon "times-circle-o", class: 'ev-new-img-list__icon'
-        .ev-new-img-list
-          = image_tag 'https://cdn.pixabay.com/photo/2019/11/25/05/51/train-4651062__480.jpg', class: 'ev-new-img-prev'
-        .ev-new-img-list
-          = image_tag 'https://cdn.pixabay.com/photo/2019/11/25/05/51/train-4651062__480.jpg', class: 'ev-new-img-prev'
-        .ev-new-img-list
-          = image_tag 'https://cdn.pixabay.com/photo/2019/11/25/05/51/train-4651062__480.jpg', class: 'ev-new-img-prev'
       = render 'event_image_fields', f: i
     .add-links
-      = link_to_add_association f, :event_images, class: 'add-btn' do
+      .add-img-btn
         = fa_icon 'plus-circle', class: 'add-btn--icon'
         追加
   .new-event

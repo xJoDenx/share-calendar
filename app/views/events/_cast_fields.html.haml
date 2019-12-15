@@ -2,5 +2,5 @@
   .form-glid
     .new-event__field
       = f.text_field :name, class: 'event-form input-form'
-      = link_to_remove_association f, class: 'remove-cast-btn' do
+      .remove-cast-btn
         = fa_icon 'times-circle'
