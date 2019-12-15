@@ -1,0 +1,48 @@
+.side-bar
+  = link_to  root_path, class: "side-bar_title" do
+    = fa_icon 'connectdevelop'
+    ShareCalendar
+  .side-bar_nav
+    = link_to root_path, class: "side-bar_link" do
+      = fa_icon 'home', class: "side-bar_link--icon"
+      ホーム
+  .side-bar_nav
+    = link_to "", class: "side-bar_link" do
+      = fa_icon 'search', class: "side-bar_link--icon"
+      検索
+  -if user_signed_in?
+    .side-bar_nav
+      = link_to new_event_path, class: "side-bar_link" do
+        = fa_icon 'clipboard', class: "side-bar_link--icon"
+        予定を追加
+    .side-bar_nav
+      = link_to new_tweet_path, class: "side-bar_link" do
+        = fa_icon 'pencil', class: "side-bar_link--icon"
+        ツイート
+    .side-bar_nav
+      = link_to user_path(current_user), class: "side-bar_link" do
+        - if current_user.image.present?
+          = image_tag "#{current_user.image}", size: '20x20', class: 'side-bar_link--img'
+          .side-bar_link__mypage
+            マイページ
+        -else
+          = image_tag 'profile.webp', size: '25x25', class: 'side-bar_link--img'
+          .side-bar_link__mypage
+            マイページ
+    .side-bar_nav
+      = link_to events_path, class: "side-bar_link" do
+        = fa_icon 'calendar', class: "side-bar_link--icon"
+        マイカレンダー
+    .side-bar_nav
+      = link_to destroy_user_session_path, method: :delete, class: "side-bar_link" do
+        = fa_icon 'user-times', class: "side-bar_link--icon"
+        ログアウト
+  - else
+    .side-bar_nav
+      = link_to new_user_registration_path, class: "side-bar_link" do
+        = fa_icon 'search', class: "side-bar_link--icon"
+        新規登録
+    .side-bar_nav
+      = link_to new_user_session_path, class: "side-bar_link" do
+        = fa_icon 'search', class: "side-bar_link--icon"
+        ログイン

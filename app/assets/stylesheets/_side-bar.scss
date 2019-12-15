@@ -1,0 +1,51 @@
+.side-bar{
+  width: 22.5%;
+  height: 780px;
+  border-right: solid 1px #888888;
+  position: fixed;
+  z-index: 3;
+}
+
+.side-bar_title{
+  display: inline-block;
+  text-align: center;
+  line-height: 40px;
+  font-size: 24px;
+  color: #660000;
+  text-shadow:1px 1px 0 #EEE;
+  margin: 10px 0 0 20px;
+}
+
+.side-bar_nav{
+  margin: 10px 0 0 40px;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+}
+
+.side-bar_link{
+  display: inline-block;
+  padding: 0 20px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50px;
+  &--icon{
+    color: #FFFFFF;
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  &--img{
+    margin-right: 5px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+  }
+  &__mypage{
+    display: inline-block;
+    margin-left: 32px;
+  }
+}
+
+.side-bar_link:hover{
+  background-color: #1DA1F2;
+}
