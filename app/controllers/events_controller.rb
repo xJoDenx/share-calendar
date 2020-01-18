@@ -6,6 +6,12 @@ class EventsController < ApplicationController
   def index
     if user_signed_in?
       @events = current_user.events
+      @schedules = []
+      @events.each do |event|
+        event.schedules.each do |sch|
+          @schedules << sch
+        end
+      end
     end
 
   end

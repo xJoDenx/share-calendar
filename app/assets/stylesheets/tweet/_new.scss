@@ -1,8 +1,6 @@
 .tweet_main-box{
-  width: 30%;
   margin: 0 auto;
   background-color: #000033;
-  border: solid 1px #EEEEEE;
 }
 
 .new-tweet-title{
@@ -34,22 +32,81 @@
   top: 10px;
   left: 20px;
 }
+
+.tw-new-img-glid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 15px;
+  margin-top: 7px;
+  padding: 0 60px;
+}
+
+.tw-new-img-field{
+  display: inline-block;
+  position: relative;
+}
+
+.tweet-form__img{
+  display: none;
+}
+
+.img-field{
+  width: 120px;
+  height: 80px;
+  display: inline-block;
+  padding: 5px;
+  background-color: #385572;
+  border: solid 1px  #888888;
+  border-radius: 5px;
+  font-weight: normal;
+  font-size: 14px;
+  cursor: pointer;
+  &__contents{
+    text-align: center;
+    padding-top: 15px;
+    &--cr{
+      padding-top: 5px;
+    }
+  }
+  &--icon{
+    margin-right: 5px;
+    font-size: 18px;
+  }
+}
+.remove-img-btn{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  &:hover{
+    color: #1DA1F2;
+  }
+}
+
 .tweet_image-btn{
   color: #EEEEEE;
-  margin-left: 70px;
+  margin: 20px 0 0 70px;
   font-size: 10px;
   cursor: pointer;
 }
 .tweet_image-btn:hover{
   color: #1DA1F2;
-}
-.tweet_image-btn:hover .tweet_image-icon{
-  color: #1DA1F2;
+  &:hover .tweet_add-icon{
+    color: #1DA1F2;
+  }
+  &:hover .tweet_image-icon{
+    color: #1DA1F2;
+  }
 }
 
+.tweet_add-icon{
+  color: #EEEEEE;
+  font-size: 24px;
+  margin-right: 10px;
+}
 .tweet_image-icon{
   color: #EEEEEE;
-  font-size: 14px;
+  font-size: 20px;
 }
 .tweet_image-hidden{
   display: none;
