@@ -14,18 +14,25 @@
           - if @user == current_user
             = link_to "編集", edit_user_registration_path, class:"my-right-btn__edit"
           - else
-            = link_to "フォロー", "", class:"my-right-btn__follow"
+            - if current_user.following?(@user)
+              = form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f|
+                = f.hidden_field :follow_id, value: @user.id
+                = f.submit 'フォロー中', class: 'my-right-btn__follow-now'
+            - else
+              = form_for(current_user.relationships.build) do |f|
+                = f.hidden_field :follow_id, value: @user.id
+                = f.submit 'フォロー', class: 'my-right-btn__follow'
         .my-introduction
           = @user.introduce
         .user-relationship
           .following
             .following__num
-              60
+              = @user.followings.length
             .following__cr
               フォロー中
           .followed
             .followed__num
-              50
+              = @user.followers.length
             .followed__cr
               フォロワー
     .my-main-content
