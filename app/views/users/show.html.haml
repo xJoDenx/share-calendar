@@ -40,35 +40,8 @@
         = link_to "ツイート", "", class: "tweet-tab active-tab"
         = link_to "イベント", "", class: "event-tab"
       .my-main-content-box
-        - @tweets.each do |tweet|
-          .my-main-content-list
-            .tweet-left
-              - if @user.image.present?
-                = image_tag "#{@user.image}", size: '40x40', class: 'list-icon'
-              -else
-                = image_tag 'profile.webp', size: '40x40', class: 'list-icon'
-            .tweet-right
-              .tweet-upper
-                .tweet-upper__name
-                  = @user.name
-                .tweet-upper__right
-                  .tweet-upper__right__date
-                    = tweet.updated_at.strftime("%Y/%m/%d %H:%M")
-                  .tweet-upper__right__btn
-                    = link_to "", class:"tweet-edit-link" do
-                      = fa_icon 'edit'
-                    .edit_hidden-ul
-                      = link_to "", class:"edit-hidden-li" do
-                        編集
-                      = link_to "", class:"edit-hidden-li" do
-                        削除
-              .tweet-text
-                = tweet.text
-              .tweet-comennt-btn
-                = link_to "", class: "comment-btn-link" do
-                  = fa_icon 'comment-o'
-                  .tweet-comennt-cr
-                  コメントする
+        = render 'tweets/tweet'
+      
 
 
   .right-box

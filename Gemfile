@@ -70,3 +70,5 @@ gem 'cocoon'
 gem 'font-awesome-rails'
 gem 'autosize'
 gem 'font-awesome-sass', "< 5.0.13"
+gem 'carrierwave'
+gem 'mini_magick'

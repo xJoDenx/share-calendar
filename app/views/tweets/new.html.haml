@@ -6,7 +6,7 @@
     .tweet_main-box
       .new-tweet-title
         投稿内容を入力
-      = form_with model:@tweet do |f|
+      = form_with model:@tweet, multipart: true do |f|
         - if @tweet.errors.any?
           #error_explanation
             %h2= "#{pluralize(@tweet.errors.count, "error")} prohibited this tweet from being saved:"
@@ -21,7 +21,6 @@
             = image_tag 'profile.webp', size: '40x40', class: 'tweet_my-icon'
           = f.fields_for :tweet_images do |i|
             = render 'tweet_image_fields', f: i
-            
           -#     .tw-new-img-field
           -#       =i.label :"event-form-${r}",class: "img-field" do
           -#         .img-field__contents
