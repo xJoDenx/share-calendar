@@ -14,18 +14,25 @@
           - if @user == current_user
             = link_to "編集", edit_user_registration_path, class:"my-right-btn__edit"
           - else
-            = link_to "フォロー", "", class:"my-right-btn__follow"
+            - if current_user.following?(@user)
+              = form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f|
+                = f.hidden_field :follow_id, value: @user.id
+                = f.submit 'フォロー中', class: 'my-right-btn__follow-now'
+            - else
+              = form_for(current_user.relationships.build) do |f|
+                = f.hidden_field :follow_id, value: @user.id
+                = f.submit 'フォロー', class: 'my-right-btn__follow'
         .my-introduction
           = @user.introduce
         .user-relationship
           .following
             .following__num
-              60
+              = @user.followings.length
             .following__cr
               フォロー中
           .followed
             .followed__num
-              50
+              = @user.followers.length
             .followed__cr
               フォロワー
     .my-main-content
@@ -33,35 +40,8 @@
         = link_to "ツイート", "", class: "tweet-tab active-tab"
         = link_to "イベント", "", class: "event-tab"
       .my-main-content-box
-        - @tweets.each do |tweet|
-          .my-main-content-list
-            .tweet-left
-              - if @user.image.present?
-                = image_tag "#{@user.image}", size: '40x40', class: 'list-icon'
-              -else
-                = image_tag 'profile.webp', size: '40x40', class: 'list-icon'
-            .tweet-right
-              .tweet-upper
-                .tweet-upper__name
-                  = @user.name
-                .tweet-upper__right
-                  .tweet-upper__right__date
-                    = tweet.updated_at.strftime("%Y/%m/%d %H:%M")
-                  .tweet-upper__right__btn
-                    = link_to "", class:"tweet-edit-link" do
-                      = fa_icon 'edit'
-                    .edit_hidden-ul
-                      = link_to "", class:"edit-hidden-li" do
-                        編集
-                      = link_to "", class:"edit-hidden-li" do
-                        削除
-              .tweet-text
-                = tweet.text
-              .tweet-comennt-btn
-                = link_to "", class: "comment-btn-link" do
-                  = fa_icon 'comment-o'
-                  .tweet-comennt-cr
-                  コメントする
+        = render 'tweets/tweet'
+      
 
 
   .right-box

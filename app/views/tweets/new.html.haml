@@ -1,25 +1,42 @@
-.header
-  = link_to "Share-Calendar", root_path, class: "header--title"
+.wrapper
+  .left-box
+    = render 'layouts/side-bar'
 
-.tweet_main-box
-  .new-tweet-title
-    投稿内容を入力
-  = form_with model:@tweet do |f|
-    - if @tweet.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@tweet.errors.count, "error")} prohibited this tweet from being saved:"
-        %ul
-          - @tweet.errors.full_messages.each do |message|
-            %li= message
-    .tweet_box
-      = f.text_area :text ,class: "tweet_field"
-      - if @user.image.present?
-        = image_tag "#{@user.image}", size: '40x40', class: 'tweet_my-icon'
-      -else
-        = image_tag 'profile.webp', size: '40x40', class: 'tweet_my-icon'
-      = f.label :image, class: "tweet_image-btn" do
-        = fa_icon 'picture-o', class: 'tweet_image-icon'
-        画像を選択
-        = f.file_field :image, class: 'tweet_image-hidden'
-      .tweet_submit
-        = f.submit '投稿する', class: "tweet_submit--btn"
+  .center-box
+    .tweet_main-box
+      .new-tweet-title
+        投稿内容を入力
+      = form_with model:@tweet, multipart: true do |f|
+        - if @tweet.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@tweet.errors.count, "error")} prohibited this tweet from being saved:"
+            %ul
+              - @tweet.errors.full_messages.each do |message|
+                %li= message
+        .tweet_box
+          = f.text_area :text ,class: "tweet_field", placeholder: "ここに内容を入力してください。"
+          - if @user.image.present?
+            = image_tag "#{@user.image}", size: '40x40', class: 'tweet_my-icon'
+          -else
+            = image_tag 'profile.webp', size: '40x40', class: 'tweet_my-icon'
+          = f.fields_for :tweet_images do |i|
+            = render 'tweet_image_fields', f: i
+          -#     .tw-new-img-field
+          -#       =i.label :"event-form-${r}",class: "img-field" do
+          -#         .img-field__contents
+          -#           = fa_icon "picture-o", class: "img-field--icon"
+          -#           .img-field__contents--cr
+          -#             画像を選択
+          -#         = i.file_field :"event-form-${r}", class: "event-form__img"
+          -#       .remove-img-btn
+          -#         = fa_icon "times-circle-o"
+            
+          .tweet_image-btn
+            = fa_icon 'plus-circle', class: 'tweet_add-icon'
+            = fa_icon 'picture-o', class: 'tweet_image-icon'
+
+          .tweet_submit
+            = f.submit '投稿する', class: "tweet_submit--btn"
+  
+  .right-box
+    #calendar

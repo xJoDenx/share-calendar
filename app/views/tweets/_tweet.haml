@@ -1,0 +1,38 @@
+- @tweets.each do |tweet|
+  .main-content-list
+    .tweet-left
+      - if tweet.user.image.present?
+        = image_tag "#{tweet.user.image}", size: '40x40', class: 'list-icon'
+      -else
+        = image_tag 'profile.webp', size: '40x40', class: 'list-icon'
+    .tweet-right
+      .tweet-upper
+        .tweet-upper__name
+          = tweet.user.name
+        .tweet-upper__right
+          .tweet-upper__right__date
+            = tweet.updated_at.strftime("%Y/%m/%d %H:%M")
+          - if tweet.user == current_user
+            .tweet-upper__right__btn
+              .tweet-edit-link
+                = fa_icon 'edit'
+              .edit_hidden-ul
+                = link_to "", class:"edit-hidden-li" do
+                  編集
+                = link_to "", class:"edit-hidden-li" do
+                  削除
+      .tweet-text
+        = tweet.text
+      - if tweet.tweet_images.present?
+        .tweet-slider-wrap
+          .tweet-images__slick
+            - tweet.tweet_images.each do |image|
+              = image_tag "#{image.img}"
+          .tweet-images__thumbnail
+            - tweet.tweet_images.each do |image|
+              = image_tag "#{image.img}"
+      .tweet-comment-btn
+        = link_to "", class: "comment-btn-link" do
+          = fa_icon 'comment-o'
+          .tweet-comment-cr
+          コメントする

@@ -1,0 +1,87 @@
+.main-content-list{
+  padding: 10px 20px;
+  display: flex;
+  border-bottom: solid 1px #888888;
+}
+
+.tweet-right{
+  width: 90%;
+  color: #EEEEEE;
+  margin-left: 10px;
+}
+
+.tweet-upper{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  &__name{
+    font-weight: bold;
+  }
+  &__right{
+    display: flex;
+    &__date{
+      color: #708090;
+      font-size: 14px;
+    }
+    &__btn{
+      margin-left: 40px;
+      position: relative;
+    }
+    &__btn:hover .tweet-edit-link{
+      color: #1DA1F2;
+    }
+    &__btn:hover .edit_hidden-ul{
+      display: block;
+    }
+  }
+}
+
+.edit_hidden-ul{
+  display: none;
+  position: absolute;
+  width: 40px;
+  top: 16px;
+  left: 0;
+}
+
+.edit-hidden-li{
+  display: inline-block;
+  color: #708090;
+  font-size: 12px;
+  padding: 3px 0;
+}
+.edit-hidden-li:hover{
+  color: #1DA1F2;
+}
+
+.tweet-text{
+  padding: 10px 0;
+  min-height: 60px;
+}
+
+.tweet-comment-btn{
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.comment-btn-link{
+  &:hover{
+    color:  #1DA1F2;
+  }
+}
+.tweet-comment-cr{
+  display: inline-block;
+  font-size: 12px;
+}
+
+.list-icon{
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tweet-edit-link{
+  color: #708090;
+}
+.comment-btn-link{
+  color: #708090;
+}
